@@ -1,0 +1,5 @@
+#agreguen una línea nueva por cada librería adicional que usen
+# json, datetime, statistics, pathlib, y csv ya estan incluidos, no es necesario agregarlos aqui. Y hay muchos mas que ya vienen incluidos.
+# Si desean probar otro pueden investigar rich or tabulate si desean.
+# Yo lo utilizare para probar su programa final con esta linea de codigo: pip install -r requirements.txt
+requests
