@@ -5,9 +5,11 @@ coordenadas_backup = {
     "Madrid, España": {"nombre": "Madrid", "pais": "España", "lat": 40.416775, "lon": -3.703790},
     "Barcelona, España": {"nombre": "Barcelona", "pais": "España", "lat": 41.385064, "lon": 2.173403},
     "Buenos Aires, Argentina": {"nombre": "Buenos Aires", "pais": "Argentina", "lat": -34.603722, "lon": -58.381592},
-    "Ciudad de México, México": {"nombre": "Ciudad de México", "pais": "México", "lat": 19.432608, "lon": -99.133208}
+    "Ciudad de México, México": {"nombre": "Ciudad de México", "pais": "México", "lat": 19.432608, "lon": -99.133208},
+    "Layton, Estados Unidos": {"nombre": "Layton", "pais": "Estados Unidos", "lat": 41.0602, "lon": -111.9710},
+    "San Marcos, Guatemala": {"nombre": "San Marcos", "pais": "Guatemala", "lat": 14.9639, "lon": -91.7944}
 }
-
+#M10/
 with open("coordenadas.json", "w", encoding="utf-8") as archivo:
     json.dump(coordenadas_backup, archivo, indent=4, ensure_ascii=False)
 
