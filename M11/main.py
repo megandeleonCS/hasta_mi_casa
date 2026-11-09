@@ -44,18 +44,6 @@ def pedir_pais(tipo):
     return pedir_texto(f"País de {tipo}: ")
 
 
-def pedir_unidad():
-    """
-    Pregunta la unidad preferida y rechaza respuestas inválidas.
-    Devuelve 'km' o 'millas'.
-    """
-    while True:
-        unidad = input("Unidad (km/millas): ").strip().lower()
-        if unidad in ("km", "millas"):
-            return unidad
-        print("Unidad no válida. Escribe 'km' o 'millas'.")
-
-
 def mostrar_resumen(ciudad_o, pais_o, ciudad_d, pais_d, unidad):
     """Imprime el resumen de confirmación antes de consultar los datos."""
     nombre_unidad = "kilómetros" if unidad == "km" else "millas"
@@ -95,9 +83,8 @@ def calcular_distancia():
     pais_o = pedir_pais("origen")
     ciudad_d = pedir_ciudad("destino")
     pais_d = pedir_pais("destino")
-    unidad = pedir_unidad()
 
-    mostrar_resumen(ciudad_o, pais_o, ciudad_d, pais_d, unidad)
+    mostrar_resumen(ciudad_o, pais_o, ciudad_d, pais_d)
 
     # Paso 5: consulta a la API
     print("Consultando datos...")

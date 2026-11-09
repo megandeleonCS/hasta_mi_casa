@@ -5,6 +5,7 @@ Este módulo NO usa input() ni print() (salvo en el bloque de prueba al final).
 Solo consulta la API y devuelve datos; main.py decide qué mostrar al usuario.
 """
 
+# Para normalizar data. Se recuerdan en base de datos? 
 import unicodedata
 
 import requests
@@ -21,6 +22,7 @@ def normalizar(texto):
     Ejemplo: ' México ' -> 'mexico'
     """
     texto = unicodedata.normalize("NFD", texto.strip().lower())
+    #Recorre caracter por caracter de cadena descompuesta ms mark marcas sin espacio tildes etc.
     return "".join(c for c in texto if unicodedata.category(c) != "Mn")
 
 

@@ -1,0 +1,16 @@
+Usuario inputs Ciudad & Pais
+          │
+          ▼
+1. Normalize input -> "layton,estados unidos"
+          │
+          ▼
+2. Revisar `coordenadas_cache.json`
+          ├── Se encuentra en JSON? ──► Devuelve coordinates inmediatamente! (0 ms network time)
+          │
+          └── No se encuentra en JSON?  ──► Utilizar Open-Meteo API
+                                           │
+                                           ▼
+                                 Guardar nuevos datos en JSON file 
+                                           │
+                                           ▼
+                                 Devolver coordinates
