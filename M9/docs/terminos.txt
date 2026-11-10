@@ -1,14 +1,40 @@
-Si no llego a la cita agendada, te trasnfiero $5.
+
+Si no llego a la cita agendada, te transfiero $5.
 
 
-1. 
+
+
+
 
 import sys
 
 # Configuración de codificación para consola Paso 4 y 5 M11
 sys.stdout.reconfigure(encoding="utf-8")
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 2.  if elif else
+
+
 if opcion == "1":
     # Entrada de datos del usuario
     ciudad_o = input("Ciudad de origen: ")
@@ -16,6 +42,12 @@ if opcion == "1":
     ciudad_d = input("Ciudad de destino: ")
     pais_d = input("País de destino: ")
     unidad = input("Unidad (km/millas): ")
+
+
+
+
+
+
 
     # Mostrar resumen
     nombre_unidad = "kilómetros" if unidad == "km" else "millas"

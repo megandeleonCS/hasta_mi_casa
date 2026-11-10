@@ -1,3 +1,10 @@
+"""
+Megan De Leon 
+M10  aprendiendo I/O
+"""
+
+
+
 # Para almacenar la lista
 roster = []
 

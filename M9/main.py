@@ -4,6 +4,11 @@ Megan De Leon
 
 main.py - Calculadora de Distancias
 """
+import sys
+
+# Configuración de codificación para consola Paso 4 y 5 M11
+sys.stdout.reconfigure(encoding="utf-8")
+
 
 ## 1. Menú principal
 # Pueden agregar mas opciones despues
