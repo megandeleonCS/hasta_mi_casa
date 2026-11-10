@@ -5,9 +5,7 @@ Este módulo NO usa input() ni print() (salvo en el bloque de prueba al final).
 Solo consulta la API y devuelve datos; main.py decide qué mostrar al usuario.
 """
 
-# Para normalizar data. Se recuerdan en base de datos? 
 import unicodedata
-
 import requests
 
 # Dirección base de la API (gratis, no requiere clave)
@@ -22,7 +20,6 @@ def normalizar(texto):
     Ejemplo: ' México ' -> 'mexico'
     """
     texto = unicodedata.normalize("NFD", texto.strip().lower())
-    #Recorre caracter por caracter de cadena descompuesta ms mark marcas sin espacio tildes etc.
     return "".join(c for c in texto if unicodedata.category(c) != "Mn")
 
 
@@ -39,27 +36,25 @@ def obtener_coordenadas(ciudad, pais):
         None si no hay coincidencia o si ocurre un error de conexión.
     """
     parametros = {
-        "name": ciudad.strip(),  # la API busca solo el nombre del lugar
-        "count": 10,             # pedimos varios resultados para filtrar por país
-        "language": "es",        # nombres de países en español
+        "name": ciudad.strip(),
+        "count": 10,
+        "language": "es",
         "format": "json",
     }
 
     try:
         respuesta = requests.get(URL_GEOCODING, params=parametros, timeout=10)
-        respuesta.raise_for_status()  # error si el código HTTP no es 200
-        datos = respuesta.json()      # convierte el JSON en diccionario de Python
+        respuesta.raise_for_status()
+        datos = respuesta.json()
     except requests.exceptions.Timeout:
-        return None  # la API tardó demasiado en responder
+        return None
     except requests.exceptions.RequestException:
-        return None  # sin internet u otro error de red o HTTP
+        return None
     except ValueError:
-        return None  # la respuesta no era un JSON válido
+        return None
 
-    # Si la ciudad no existe, la API no incluye "results"
     resultados = datos.get("results", [])
 
-    # Elegimos el primer resultado cuyo país coincida con el ingresado
     pais_buscado = normalizar(pais)
     for lugar in resultados:
         if normalizar(lugar.get("country", "")) == pais_buscado:
@@ -70,18 +65,14 @@ def obtener_coordenadas(ciudad, pais):
                 "lon": lugar.get("longitude"),
             }
 
-    return None  # ningún resultado coincidió con el país
+    return None
 
 
-# Este bloque solo se ejecuta al correr api.py directamente
-# (no cuando main.py lo importa). Sirve para probar el módulo solo.
 if __name__ == "__main__":
     import sys
-
-    # Evita caracteres raros (�) con acentos en la consola de Windows
     sys.stdout.reconfigure(encoding="utf-8")
 
     print(obtener_coordenadas("Salt Lake City", "Estados Unidos"))
     print(obtener_coordenadas("San Marcos", "Guatemala"))
-    print(obtener_coordenadas("Bogotá ", "colombia"))        # espacios y mayúsculas
-    print(obtener_coordenadas("Ciudad Inventada", "Guatemala"))  # debe dar None
+    print(obtener_coordenadas("Bogotá ", "colombia"))
+    print(obtener_coordenadas("Ciudad Inventada", "Guatemala"))
